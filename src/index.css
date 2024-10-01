@@ -12,3 +12,336 @@ html,
 body {
   margin: 0px;
 }
+
+/* header elements */
+.header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 0 25px 0 25px;
+  font-size: 13px;
+  font-style: italic;
+}
+
+.hero {
+  padding: 25px;
+  margin-top: -20px;
+}
+
+.body-text {
+  font-size: 15px;
+  line-height: 100%;
+  margin-top: -10px;
+}
+
+/* displays number of users, searchbar, and sorting */
+.buffer {
+  padding: 25px;
+  margin-top: -30px;
+  font-size: 18px;
+  font-weight: bold;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: start;
+
+  @media screen and (min-width: 600px) {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+.buffer-users {
+  width: 100px;
+  float: left;
+}
+
+.buffer-number {
+  color: rgb(129, 129, 129);
+}
+
+.buttons {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  gap: 10px;
+  width: 100%;
+
+  @media screen and (min-width: 500px) {
+    flex-direction: row;
+    align-items: center;
+  }
+}
+
+/* search */
+.search-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  justify-content: flex-end;
+}
+
+.search-input {
+  padding: 10px;
+  width: 80%;
+  font-size: 16px;
+  border: 1px solid white;
+  border-bottom: 1px solid black;
+
+  @media screen and (min-width: 600px) {
+    width: 350px;
+  }
+}
+
+.search-input:focus {
+  border: 1px solid white;
+}
+
+.search-button {
+  padding: 8px 16px;
+  background-color: white;
+  border: 1px solid black;
+  border-radius: 8px;
+  font-size: 14px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+  transition: all 300ms;
+}
+
+.search-button:hover {
+  background-color: black;
+  color: white;
+  cursor: pointer;
+}
+
+/* sorting */
+.sorting-buttons {
+  float: right;
+  padding-right: 30px;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+}
+
+.sort-button {
+  padding: 5px;
+  border-radius: 5px;
+  margin-right: 5px;
+  height: 25px;
+  width: 25px;
+  color: rgb(0, 0, 0);
+  cursor: pointer;
+  background-color: #ffffff;
+  transition: all 300ms;
+}
+
+.sort-button:hover {
+  color: white;
+  background-color: black;
+}
+
+.sort-by-button {
+  padding: 5px 10px;
+  border-radius: 5px;
+  background-color: #ffffff;
+  transition: all 300ms;
+  margin-right: 5px;
+  border: 1px solid rgb(83, 83, 83);
+}
+
+.sort-by-button:hover {
+  color: white;
+  background-color: black;
+  cursor: pointer;
+}
+
+/* userdata-related */
+.userdata {
+  padding: 25px;
+}
+
+/* usercard */
+.usercard {
+  width: 100%;
+  height: 80px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  border-bottom: 1px solid rgb(218, 218, 218);
+  position: relative;
+}
+
+.usercard:last-child {
+  border-bottom: none;
+}
+
+.usercard-inner {
+  width: 100%;
+  height: 80px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.initial-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  background-color: rgb(158, 208, 255);
+  margin: 0 25px 0 25px;
+}
+
+.initial {
+  font-weight: bold;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  font-size: 14px;
+  width: 200px;
+}
+
+.list p {
+  margin: 0;
+}
+
+.email {
+  gap: 10px;
+  font-size: 14px;
+  width: 550px;
+  color: #333;
+  text-decoration: none;
+  transition: all 300ms;
+
+  @media screen and (max-width: 685px) {
+    display: none;
+  }
+}
+
+.email:hover {
+  cursor: pointer;
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 5px;
+  text-decoration-color: rgb(0, 98, 209);
+}
+
+.phone {
+  font-size: 14px;
+  width: 500px;
+  gap: 10px;
+
+  @media screen and (max-width: 800px) {
+    display: none;
+  }
+}
+
+.website {
+  font-size: 14px;
+  width: 500px;
+  gap: 10px;
+
+  @media screen and (max-width: 1100px) {
+    display: none;
+  }
+}
+
+.userdata-button {
+  background-color: white;
+  border: 1px solid white;
+  cursor: pointer;
+}
+
+/* expanded view of userdata */
+.expanded-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(255, 255, 255, 0.8);
+  z-index: 30;
+  overflow: auto;
+}
+
+.expanded {
+  z-index: 30;
+  height: auto;
+  background-color: #ffffff;
+  width: 300px;
+  padding: 20px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  position: relative;
+
+  @media screen and (min-width: 600px) {
+    width: 400px;
+  }
+
+  @media screen and (min-width: 750px) {
+    width: 600px;
+  }
+}
+
+.xmark-container {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+  border: 1px solid white;
+  transition: all 300ms;
+}
+
+.xmark-container:hover {
+  color: blue;
+  cursor: pointer;
+}
+
+.xmark {
+  height: 25px;
+  width: 25px;
+}
+
+.user-info {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 20px;
+}
+
+.info-section {
+  padding: 10px 0;
+  border-bottom: 1px solid #ddd;
+}
+
+.info-section:last-child {
+  border-bottom: none;
+}
+
+.info-section-inner {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-items: center;
+  gap: 10px;
+}

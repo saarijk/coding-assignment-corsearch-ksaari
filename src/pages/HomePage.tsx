@@ -2,6 +2,8 @@ import { useEffect, useState } from 'react';
 import axios from "axios";
 import { User } from '../shared/types';
 import { GoSortAsc, GoSortDesc } from "react-icons/go";
+import UserCard from '../components/UserCard';
+import { FaMagnifyingGlass } from "react-icons/fa6";
 
 type Props = {}
 
@@ -81,53 +83,60 @@ function HomePage({ }: Props) {
 
     return (
         <div>
-            <div>
-                <p>SEARCH</p>
-                <input type="text" placeholder="Search..." onChange={handleSearchInput} />
-                <button onClick={clearInput} className="search-button">Clear</button>
+            <div className="header">
+                {/* flavour text */}
+                <p>Corsearch / <b>Coding Assignment</b></p>
+                <p>K. Saari</p>
             </div>
-            <div>
-                <p>SORT / FILTER</p>
-                <div>
-                    <button onClick={() => setSortByName(!sortByName)}>{sortByName ? "Name" : "Email"}</button>
-                    <GoSortAsc onClick={() => sortAscending()} />
-                    <GoSortDesc onClick={() => sortDescending()} />
+            <div className="hero">
+                {/* main title */}
+                <h1>User Management</h1>
+                <p className="body-text">Browse user information here</p>
+            </div>
+            <div className="buffer">
+                {/* stats + search */}
+                {!showSearch ? <p className="buffer-users">Users <span className="buffer-number">{users.length}</span></p> : <p className="buffer-users">Users <span className="buffer-number">{filteredResults.length}</span></p>}
+                {/* buttons */}
+                <div className="buttons">
+                    {/* search */}
+                    <div className="search-container">
+                        <FaMagnifyingGlass />
+                        <input type="text" placeholder="Search..." className="search-input" onChange={handleSearchInput} />
+                        <button onClick={clearInput} className="search-button">Clear</button>
+                    </div>
                 </div>
             </div>
-            {!showSearch && (
-                <>
-                    {/* userdata */}
-                    {users.map((user) => (
-                        <div>
-                            <p>{user.name}</p>
-                            <p>{user.email}</p>
-                            <p>{user.phone}</p>
-                            <p>{user.website}</p>
-                            <p>{user.address.city}</p>
-                        </div>
-                    ))}
-                </>
-            )}
+            <div className="sorting-buttons">
+                <button className="sort-by-button" onClick={() => setSortByName(!sortByName)}>{sortByName ? "Name" : "Email"}</button>
+                <GoSortAsc className="sort-button" onClick={() => sortAscending()} />
+                <GoSortDesc className="sort-button" onClick={() => sortDescending()} />
+            </div>
+            <div className="userdata">
+                {!showSearch && (
+                    <>
+                        {/* userdata */}
+                        {users.map((user) => (
+                            <UserCard key={user.id} user={user} />
+                        ))}
+                    </>
+                )}
 
-            {/* search results */}
-            {showSearch && filteredResults.length > 0 && (
-                <div>
-                    {filteredResults.map((result, index) => (
-                        <div key={index}>
-                            <p>{result.name}</p>
-                            <p>{result.email}</p>
-                            <p>{result.phone}</p>
-                            <p>{result.website}</p>
-                            <p>{result.address.city}</p>
-                        </div>
-                    ))}
-                </div>
-            )}
+                {/* search results */}
+                {showSearch && filteredResults.length > 0 && (
+                    <div className="userdata">
+                        {filteredResults.map((result, index) => (
+                            <div key={index}>
+                                <UserCard key={index} user={result} />
+                            </div>
+                        ))}
+                    </div>
+                )}
 
-            {/* no results found */}
-            {showSearch && filteredResults.length === 0 && (
-                <div>No results found with "{searchTerm}"</div>
-            )}
+                {/* no results found */}
+                {showSearch && filteredResults.length === 0 && (
+                    <div className="no-results">No results found with "{searchTerm}"</div>
+                )}
+            </div>
         </div>
     )
 }
